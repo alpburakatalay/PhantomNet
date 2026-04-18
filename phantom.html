@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhantomNet</title>
+
+<style>
+body {
+    background-color: #000;
+    color: #00FF00;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+.terminal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.prompt {
+    color: #00FF00;
+}
+
+.accordion {
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #00FF00;
+}
+
+.accordion::before {
+    content: "> ";
+}
+
+.panel {
+    display: none;
+    padding-left: 20px;
+    border-left: 2px solid #00FF00;
+    margin-bottom: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="terminal">
+
+    <div class="prompt">root@havok:~$ Yeni Güncelleme!</div>
+
+    <div class="accordion">TC Kimlikler</div>
+    <div class="panel">
+        <p>demo_data_001</p>
+    </div>
+
+    <div class="accordion">Sevindiren Haber</div>
+    <div class="panel">
+        <p>Artık Ela'yla mutluyum</p>
+    </div>
+
+    <div class="accordion">Gizli Güncelleme Spoileri-1</div>
+    <div class="panel">
+        <p>Yeni sistem modu aktif</p>
+    </div>
+
+    <div class="accordion">Gizli Güncelleme Spoileri-2</div>
+    <div class="panel">
+        <p>Yok haha troll</p>
+    </div>
+
+    <div class="prompt">root@havok:~$ echo Sürekli Güncellenecek</div>
+    <div class="prompt">root@havok:~$</div>
+
+    <br>
+
+    <a href="index.html" style="color:#00ff00;">← Geri dön</a>
+
+</div>
+
+<script>
+const accordions = document.querySelectorAll('.accordion');
+accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+        const panel = acc.nextElementSibling;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    });
+});
+</script>
+
+</body>
+</html>
