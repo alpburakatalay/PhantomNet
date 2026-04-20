@@ -1,194 +1,59 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sorgu Paneli</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0b1220;
-        color: #fff;
-    }
-
-    .container {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
-    }
-
-    h1 {
-        margin-bottom: 20px;
-    }
-
-    .card {
-        background: #111a2e;
-        border: 1px solid #1f2a44;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-
-    .row {
-        display: flex;
-        gap: 10px;
-    }
-
-    input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #2a3b5f;
-        background: #0c1528;
-        color: white;
-        outline: none;
-    }
-
-    button {
-        padding: 10px 15px;
-        border: none;
-        border-radius: 8px;
-        background: #3b82f6;
-        color: white;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background: #2563eb;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    li {
-        background: #0c1528;
-        padding: 10px;
-        border-radius: 6px;
-        margin-bottom: 8px;
-        border: 1px solid #1f2a44;
-    }
-
-    .muted {
-        color: #94a3b8;
-    }
-
-    .tag {
-        display:inline-block;
-        font-size:12px;
-        padding:2px 6px;
-        border-radius:6px;
-        background:#1f2a44;
-        margin-left:8px;
-    }
-
-    .nav {
-        text-align:center;
-        margin-top: 20px;
-    }
-
-    .nav a {
-        display:inline-block;
-        padding:10px 15px;
-        background:#22c55e;
-        color:white;
-        text-decoration:none;
-        border-radius:8px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Bildirimi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1f2937;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px 20px;
+        }
+        
+        .message {
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 1.4;
+            margin: 0;
+            color: #374151;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Sorgu Paneli</h1>
-
-    <div class="card">
-        <div class="row">
-            <input id="query" type="text" placeholder="İsim, şehir veya ID yaz..." />
-            <button onclick="search()">Ara</button>
-        </div>
+    <div class="container">
+        <p class="message">
+            Artık bu site hizmet vermemektedir.
+        </p>
     </div>
-
-    <div class="card">
-        <h2>Veritabanı Sonuçları</h2>
-        <ul id="results">
-            <li class="muted">Arama bekleniyor...</li>
-        </ul>
+    
+    <div class="footer">
+        © 2026 Tüm Hakları Saklıdır.
     </div>
-
-    <div class="nav">
-        <a href="phantom.html">PhantomNet Aç ➜</a>
-    </div>
-</div>
-
-<script>
-const database = [
-    { id: 1, name: "Gökalp Çatal", city: "15331170988", role: "Yok" },
-    { id: 2, name: "Yuşa Yağız Görgülü", city: "11545153588", role: "Yok" },
-    { id: 3, name: "Yusuf Burak Ölmez", city: "17420977164", role: "Yok" },
-    { id: 4, name: "İrem Köse", city: "19798020602", role: "Yok" },
-    { id: 5, name: "İpek Derin Şahin", city: "15544011900", role: "Yok" },
-    { id: 6, name: "Emir Kara", city: "53380785470", role: "Yok" },
-    { id: 7, name: "Hidayet Mert Doğan", city: "68275288950", role: "Yok" },
-    { id: 8, name: "Yağmur Ada Kaplan", city: "63628443826", role: "Yok" },
-    { id: 9, name: "Çağan Serhatlı", city: "57244041344", role: "Yok" },
-    { id: 10, name: "Cemal Ege Demirel", city: "16258138778", role: "Yok" },
-    { id: 11, name: "Eymen Ün", city: "59395584930", role: "Yok" },
-    { id: 12, name: "Arda Türkgenç", city: "17210326226", role: "Yok" },
-    { id: 13, name: "Atlas Çelik", city: "19663026654", role: "Yok" },
-    { id: 14, name: "Emir Alp Keskin", city: "14416056186", role: "Yok" },
-    { id: 15, name: "Elif Karagöz", city: "18834000772", role: "Yok" },
-    { id: 16, name: "Yiğit Gök", city: "86776123472", role: "Yok" },
-    { id: 17, name: "İsmail Yılmaz", city: "02902146521", role: "Yok" },
-    { id: 18, name: "Eylül Yağcıoğlu", city: "16949984066", role: "Yok" },
-    { id: 19, name: "Belinay Dağ", city: "17863023718", role: "Yok" },
-    { id: 20, name: "Zeynep Asya Çakır", city: "15817155362", role: "Yok" },
-    { id: 21, name: "Zeynep Ayça Keskin", city: "46615057992", role: "Yok" },
-    { id: 22, name: "Yiğithan Yiğit", city: "11212164244", role: "Yok" },
-    { id: 23, name: "Cihangir Koca", city: "53713765704", role: "Yok" },
-    { id: 24, name: "Serdil Buğlem Çebi", city: "24194754556", role: "Yok" },
-    { id: 25, name: "Kuzey Meta", city: "13819219396", role: "Yok" },
-    { id: 26, name: "Metehan Şevgin", city: "32648480982", role: "Yok" },
-    { id: 27, name: "İnci Ece Döğer", city: "13375236516", role: "Yok" },
-    { id: 28, name: "Arya Başlı", city: "41915165316", role: "Yok" },
-    { id: 29, name: "Ela Bayraktar", city: "11992011486", role: "Yok" },
-    { id: 30, name: "Ecem Nur Kaya", city: "46705083788", role: "Yok" },
-    { id: 31, name: "Rüzgar Günaydın", city: "15127071666", role:"Yok"},
-    { id: 32, name: "Emir Eroğlu", city: "71440176594", role:"Yok"}
-];
-
-function search() {
-    const q = document.getElementById("query").value.toLowerCase().trim();
-    const results = document.getElementById("results");
-
-    results.innerHTML = "";
-
-    if (!q) {
-        results.innerHTML = '<li class="muted">Boş sorgu girildi.</li>';
-        return;
-    }
-
-    const filtered = database.filter(item =>
-        item.name.toLowerCase().includes(q) ||
-        item.city.toLowerCase().includes(q) ||
-        item.id.toString().includes(q) ||
-        item.role.toLowerCase().includes(q)
-    );
-
-    if (filtered.length === 0) {
-        results.innerHTML = '<li class="muted">Sonuç bulunamadı.</li>';
-        return;
-    }
-
-    filtered.forEach(item => {
-        const li = document.createElement("li");
-        li.innerHTML = `<b>${item.name}</b> <span class="tag">#${item.id}</span><br/>${item.city} - ${item.role}`;
-        results.appendChild(li);
-    });
-}
-</script>
-
 </body>
 </html>
